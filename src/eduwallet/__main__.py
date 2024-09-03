@@ -2,6 +2,7 @@ import math
 import time
 import json
 import sys
+from pathlib import Path
 
 # functions
 ## coloured text function
@@ -151,8 +152,19 @@ saved_plans = {
    }
 }
 
+# initial creation of the database
+plans_storage_file_path = Path.home()/"plans.json"
+
+if not plans_storage_file_path.exists():
+    initial_data = {
+
+    }
+
+    with plans_storage_file_path.open("w") as file:
+           json.dump(initial_data, file, indent=4)
+
 # opening the database
-with open('plans.json', 'r') as file:
+with open(plans_storage_file_path, 'r') as file:
    saved_plans = json.load(file)
 
 # Initial plan picker and welcome message

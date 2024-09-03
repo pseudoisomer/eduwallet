@@ -5,7 +5,7 @@
 # How do I use it?
 - just download the python file and run it with python3 in your terminal, within the directory you have downloaded it in
 ```
-python3 eduwallet.py
+python3 -m eduwallet
 ```
 # Latest Update v1.1.0
 v1.1.0 brings a bunch of added features!
