@@ -4,6 +4,17 @@ import json
 import sys
 from pathlib import Path
 
+# initial creation of the database
+plans_storage_file_path = Path.home()/"plans.json"
+
+if not plans_storage_file_path.exists():
+    initial_data = {
+
+    }
+
+    with plans_storage_file_path.open("w") as file:
+           json.dump(initial_data, file, indent=4)
+
 # functions
 ## coloured text function
 def print_red(text):
@@ -104,7 +115,7 @@ def save_the_plan(save_plan_data):
     if save == 'y' :
         new_saved_plan_name = input('\nwhat name would you like to give this plan?\n')
         saved_plans[new_saved_plan_name] = save_plan_data
-        with open('plans.json','w') as file:
+        with plans_storage_file_path.open("w") as file:
                 json.dump(saved_plans,file,indent=4)
         print_green('\nsaved!\n')
 
@@ -133,7 +144,7 @@ def plan_modification(plan_of_choice):
                     print(f'be aware that you have gone overbudget for the "{category_to_modify}" category, by {plan_modder_dictionary[category_to_modify]} $!')
 
                 # saving the user's changes to the plan
-            with open('plans.json', 'w') as file:
+            with plans_storage_file_path.open('w') as file:
                 json.dump(saved_plans, file, indent=4)
         # allow user to exit
         elif category_to_modify == 'exit' or category_to_modify == 'none':
@@ -152,16 +163,6 @@ saved_plans = {
    }
 }
 
-# initial creation of the database
-plans_storage_file_path = Path.home()/"plans.json"
-
-if not plans_storage_file_path.exists():
-    initial_data = {
-
-    }
-
-    with plans_storage_file_path.open("w") as file:
-           json.dump(initial_data, file, indent=4)
 
 # opening the database
 with open(plans_storage_file_path, 'r') as file:
@@ -218,7 +219,7 @@ while True :
                 else:
                     print_red('\nplease confirm your choice\n')
                     time.sleep(1)
-                with open('plans.json','w') as file:
+                with plans_storage_file_path.open('w') as file:
                     json.dump(saved_plans,file,indent=4)
             elif chosen_plan_to_delete in ['exit','quit','stop','cancel','none']:
                 break
