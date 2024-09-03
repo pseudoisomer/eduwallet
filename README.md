@@ -11,7 +11,6 @@ pip install eduwallet
 ```
 python3 -m eduwallet
 ```
--
 # Latest Update v1.1.1
 ## v1.1.0 brings a bunch of added features!
 - you can now save and manage your plans and the different categories within them, allowing you to track how much money you have spent
