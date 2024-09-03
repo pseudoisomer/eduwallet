@@ -21,4 +21,5 @@ python3 -m eduwallet
 - and other small changes
 ## v1.1.1
 - fixed some bugs
+## v1.1.2
 - added project on pypi for easier installation
